@@ -5,9 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="dist/css/style.css">
-  <title>Document</title>
+  <title>UK Bank Holidays 2018 / 19</title>
 </head>
 <body>
-  
+  <h1>UK Bank Holidays in 2018-19</h1>
+  <ul id='holidays'></ul>
+
+      <script type="text/javascript">
+
+        const endpoint = 'https://www.gov.uk/bank-holidays.json';
+        const ul = document.getElementById('holidays')
+
+        let bankHolidays;
+        let england;
+        
+        fetch(endpoint)
+          .then(blob => blob.json())
+          .then(function(data) {
+            bankHolidays = data;
+            england = bankHolidays["england-and-wales"].events;
+            const html = england.map((items)=>{
+              const [year, month, date] = items.date.split("-");
+              if(year >= 2018){
+                return `
+              <li>${items.title} <br/> <span class='yellow'>(${date} / ${month} / ${year})</span>  </li>
+              `;
+              }
+            
+            }).join('');
+          ul.innerHTML = html;
+        });
+
+      </script>
 </body>
 </html>
