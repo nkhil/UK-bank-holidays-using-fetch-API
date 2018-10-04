@@ -1,6 +1,6 @@
 # Bank Holidays in England (UK) during 2018/19 using `.fetch()`
 
-I used JSON data provided by gov.uk [here](https://www.gov.uk/bank-holidays.json) using the new `.fetch()` API in vanilla JS to parse over the holidays, and only display the ones in 2018 / 19.
+I used JSON data provided by gov.uk [here](https://www.gov.uk/bank-holidays.json) using the new `.fetch()` API in vanilla JS to `map()` over the holidays, and only display the ones in 2018 / 19.
 
 You can find a working version over at https://codepen.io/mushroom23/full/NOxBOM/
 
