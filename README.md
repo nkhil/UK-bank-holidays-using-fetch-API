@@ -6,7 +6,7 @@ You can find a working version over at https://codepen.io/mushroom23/full/NOxBOM
 
 ## Next Steps
 
-- Use `Date.now()` to get the latest time, and only display bank holidays in the future. 
-- Display a countdown to the next bank holiday
+- **DONE** ~~Use `Date.now()` to get the latest time, and only display bank holidays in the future. ~~
+- **DONE** ~~Display a countdown to the next bank holiday~~
 
 
