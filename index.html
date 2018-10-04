@@ -8,7 +8,7 @@
   <title>UK Bank Holidays 2018 / 19</title>
 </head>
 <body>
-  <h1>UK Bank Holidays in 2018-19</h1>
+  <h1>Upcoming UK Bank Holidays</h1>
   <ul id='holidays'></ul>
 
       <script type="text/javascript">
@@ -21,12 +21,20 @@
         
         fetch(endpoint)
           .then(blob => blob.json())
-          .then(function(data) {
+          .then(data => handleDates(data));
+
+          function handleDates(data) {
             bankHolidays = data;
             england = bankHolidays["england-and-wales"].events;
+            const now = new Date();
+            const thisMonth = now.getUTCMonth() + 1; //months from 1-12
+            const thisDay = now.getUTCDate();
+            const thisYear = now.getUTCFullYear();
+            const thisDate = thisYear + '-' +thisMonth + '-' +thisDay;
             const html = england.map((items)=>{
               const [year, month, date] = items.date.split("-");
-              if(year >= 2018){
+              
+              if(Date.parse(thisDate) <= Date.parse(items.date)){
                 return `
               <li>${items.title} <br/> <span class='yellow'>(${date} / ${month} / ${year})</span>  </li>
               `;
@@ -34,7 +42,7 @@
             
             }).join('');
           ul.innerHTML = html;
-        });
+        }
 
       </script>
 </body>
