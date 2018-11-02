@@ -8,24 +8,25 @@
   <title>UK Bank Holidays 2018 / 19</title>
 </head>
 <body>
-  <h1>Upcoming UK Bank Holidays</h1>
+  <h1>
+    <img src="img/ukflag.png" alt="">
+    Upcoming UK Bank Holidays
+    <img src="img/ukflag.png" alt="">
+  </h1>
   <ul id='holidays'></ul>
 
       <script type="text/javascript">
 
         const endpoint = 'https://www.gov.uk/bank-holidays.json';
         const ul = document.getElementById('holidays')
-
-        let bankHolidays;
-        let england;
-        
+                    
         fetch(endpoint)
           .then(blob => blob.json())
           .then(data => handleDates(data));
 
           function handleDates(data) {
-            bankHolidays = data;
-            england = bankHolidays["england-and-wales"].events;
+            let bankHolidays = data;
+            let england = bankHolidays["england-and-wales"].events;
             const now = new Date();
             const thisMonth = now.getUTCMonth() + 1; //months from 1-12
             const thisDay = now.getUTCDate();
